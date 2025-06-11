@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>About & Services — Photocraft</title>
+<style>
+  :root {
+    --color-bg: #ffffff;
+    --color-primary: #111827;
+    --color-secondary: #6b7280;
+    --color-accent: #2563eb;
+    --color-accent-hover: #1d4ed8;
+    --color-card-bg: #f9fafb;
+    --color-footer-bg: #ffffff;
+    --color-footer-text: #6b7280;
+    --color-footer-heading: #111827;
+    --footer-radius: 0.75rem;
+    --footer-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    --shadow-light: 0 4px 12px rgba(0,0,0,0.05);
+    --max-width: 1200px;
+    --transition-fast: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  [data-theme="dark"] {
+    --color-bg: #121212;
+    --color-primary: #e0e0e0;
+    --color-secondary: #a0a0a0;
+    --color-card-bg: #1e1e1e;
+    --color-footer-bg: #181818;
+    --color-footer-text: #a0a0a0;
+    --color-footer-heading: #e0e0e0;
+    --footer-shadow: 0 8px 24px rgba(0,0,0,0.9);
+    --shadow-light: 0 4px 12px rgba(255,255,255,0.05);
+  }
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-secondary);
+    line-height: 1.6;
+    font-size: 18px;
+    scroll-behavior: smooth;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  a {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+  a:hover, a:focus-visible {
+    color: var(--color-accent-hover);
+    outline: none;
+  }
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 1rem;
+    position: relative;
+  }
+  /* Header */
+  header {
+    position: sticky;
+    top: 0;
+    background: var(--color-bg);
+    box-shadow: var(--shadow-light);
+    z-index: 10000;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  header.scrolled {
+    box-shadow: 0 4px 20px rgb(0 0 0 / 0.15);
+  }
+  nav {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    height: 70px;
+  }
+  .logo {
+    font-weight: 900;
+    font-size: 1.8rem;
+    color: var(--color-primary);
+    letter-spacing: 0.12em;
+    user-select: none;
+    cursor: default;
+  }
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+  }
+  .nav-links a {
+    font-weight: 600;
+    font-size: 1rem;
+    position: relative;
+    padding: 4px 0;
+    color: var(--color-primary);
+    transition: color 0.25s ease;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: var(--color-accent);
+    border-radius: 4px;
+    transition: width 0.25s ease;
+  }
+  .nav-links a:hover,
+  .nav-links a:focus-visible {
+    color: var(--color-accent-hover);
+  }
+  .nav-links a:hover::after,
+  .nav-links a:focus-visible::after {
+    width: 100%;
+  }
+  .nav-links a:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+  }
+  .btn-nav {
+    background-color: var(--color-accent);
+    color: #fff;
+    font-weight: 700;
+    border: none;
+    border-radius: var(--footer-radius);
+    padding: 0.5rem 1.2rem;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.25s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .btn-nav:hover,
+  .btn-nav:focus-visible {
+    background-color: var(--color-accent-hover);
+    transform: scale(1.05);
+    outline: none;
+  }
+  .theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+    color: var(--color-primary);
+  }
+  .theme-toggle:hover,
+  .theme-toggle:focus-visible {
+    background-color: var(--color-card-bg);
+    outline: none;
+  }
+  .theme-toggle svg {
+    width: 22px;
+    height: 22px;
+    stroke: currentColor;
+    fill: none;
+  }
+  .menu-toggle {
+    display: none;
+    position: relative;
+    width: 28px;
+    height: 22px;
+    cursor: pointer;
+    border: none;
+    background: none;
+  }
+  .menu-toggle:focus {
+    outline-offset: 4px;
+    outline-color: var(--color-accent);
+    outline-style: solid;
+    outline-width: 2px;
+  }
+  .menu-toggle .bar {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 3.5px;
+    background-color: var(--color-primary);
+    border-radius: 3px;
+    opacity: 1;
+    left: 0;
+    transition: all 0.3s ease-in-out;
+  }
+  .menu-toggle .bar:nth-child(1) {
+    top: 0;
+  }
+  .menu-toggle .bar:nth-child(2) {
+    top: 9px;
+  }
+  .menu-toggle .bar:nth-child(3) {
+    top: 18px;
+  }
+  .menu-toggle.open .bar:nth-child(1) {
+    top: 9px;
+    transform: rotate(45deg);
+  }
+  .menu-toggle.open .bar:nth-child(2) {
+    opacity: 0;
+    left: -60px;
+  }
+  .menu-toggle.open .bar:nth-child(3) {
+    top: 9px;
+    transform: rotate(-45deg);
+  }
+  @media (max-width: 768px) {
+    nav {
+      height: auto;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding: 1rem 1rem;
+      align-items: center;
+    }
+    .nav-links {
+      flex-direction: column;
+      width: 100%;
+      gap: 1.25rem;
+      display: none;
+      margin-top: 0.5rem;
+      align-items: center;
+    }
+    .nav-links.active {
+      display: flex;
+    }
+    .nav-links a {
+      font-size: 1.125rem;
+      text-align: center;
+      width: 100%;
+    }
+    .btn-nav {
+      width: 100%;
+      padding: 0.75rem;
+      font-size: 1.125rem;
+    }
+    .menu-toggle {
+      display: block;
+    }
+    .header-controls {
+      order: 2;
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 0.5rem;
+      gap: 1rem;
+      align-items: center;
+    }
+  }
+  main {
+    max-width: var(--max-width);
+    margin: 3rem auto 6rem;
+    padding: 0 1rem;
+  }
+  .section-title {
+    font-size: 2.75rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    margin-bottom: 3rem;
+    text-align: center;
+    /* Background image */
+    position: relative;
+    padding: 2rem 1rem;
+    z-index: 1;
+    overflow: hidden;
+  }
+  .section-title::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('https://images.unsplash.com/photo-1468071174046-657d9d351a40?auto=format&fit=crop&w=1920&q=60');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: brightness(0.25);
+    z-index: -1;
+    transform: translateX(100%);
+    animation: slide-bg 25s linear infinite;
+  }
+  @keyframes slide-bg {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  .services-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px, 1fr));
+    gap: 2.5rem;
+  }
+  .service-card {
+    background-color: var(--color-card-bg);
+    border-radius: var(--footer-radius);
+    box-shadow: var(--shadow-light);
+    padding: 2.5rem;
+    transition: box-shadow 0.35s ease, transform 0.35s ease;
+    cursor: default;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .service-card:hover,
+  .service-card:focus-within {
+    box-shadow: 0 10px 28px rgba(37, 99, 235, 0.4);
+    transform: translateY(-7px);
+    outline: none;
+  }
+  .service-card h3 {
+    font-size: 1.65rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--color-primary);
+  }
+  .service-card p {
+    color: var(--color-secondary);
+    font-size: 1.125rem;
+    line-height: 1.75;
+  }
+  .service-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 0.75rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow-light);
+    transition: box-shadow 0.3s ease;
+  }
+  .service-card img:hover,
+  .service-card img:focus-visible {
+    box-shadow: 0 12px 36px rgba(37, 99, 235, 0.6);
+    outline: none;
+  }
+  /* Footer Styling from Homepage */
+  footer {
+    background-color: var(--color-footer-bg);
+    padding: 6rem 1.5rem 6rem;
+    user-select: none;
+    color: var(--color-footer-text);
+    box-shadow: var(--footer-shadow);
+  }
+  footer .footer-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+    border-radius: var(--footer-radius);
+    background: var(--color-footer-bg);
+  }
+  footer .branding {
+    flex: 1 1 320px;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    color: var(--color-footer-text);
+  }
+  footer .branding .logo {
+    font-weight: 800;
+    font-size: 2rem;
+    color: var(--color-footer-heading);
+    margin-bottom: 1rem;
+    user-select: none;
+  }
+  footer .branding p {
+    font-size: 1rem;
+    color: var(--color-footer-text);
+    line-height: 1.6;
+  }
+  footer nav.footer-nav {
+    flex: 0 1 160px;
+    display: flex;
+    flex-direction: column;
+    color: var(--color-footer-text);
+  }
+  footer nav.footer-nav h4 {
+    font-weight: 800;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--color-footer-heading);
+  }
+  footer nav.footer-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  footer nav.footer-nav ul li {
+    margin-bottom: 0.5rem;
+  }
+  footer nav.footer-nav ul li a {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--color-footer-text);
+    transition: color 0.3s ease;
+  }
+  footer nav.footer-nav ul li a:hover,
+  footer nav.footer-nav ul li a:focus-visible {
+    color: var(--color-accent);
+    outline: none;
+  }
+  footer .social-section {
+    flex: 0 1 180px;
+    display: flex;
+    flex-direction: column;
+    color: var(--color-footer-text);
+  }
+  footer .social-section h4 {
+    font-weight: 800;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--color-footer-heading);
+  }
+  footer .social-links {
+    display: flex;
+    gap: 1.5rem;
+    padding-left: 0;
+    margin: 0;
+    list-style: none;
+  }
+  footer .social-links li a {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--color-footer-text);
+    transition: color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+  }
+  footer .social-links li a:hover,
+  footer .social-links li a:focus-visible {
+    color: var(--color-accent);
+    outline: none;
+  }
+  footer .social-links svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    fill: none;
+  }
+  @media (max-width: 768px) {
+    nav {
+      padding: 10px 1rem;
+      height: auto;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .nav-links {
+      width: 100%;
+      order: 3;
+      flex-wrap: wrap;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    .nav-links.active {
+      display: flex;
+    }
+    .nav-links a {
+      width: auto;
+      font-size: 1.125rem;
+      text-align: center;
+    }
+    .btn-nav {
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto;
+      font-size: 1.125rem;
+      padding: 12px 0;
+    }
+    .menu-toggle {
+      display: block;
+      order: 2;
+      margin-left: auto;
+    }
+    .header-controls {
+      order: 1;
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+      gap: 1rem;
+    }
+  }
+</style>
+</head>
+<body>
+<header>
+  <nav role="navigation" aria-label="Primary Navigation">
+    <div class="logo" tabindex="0">Jamrez Photography</div>
+    <div class="header-controls" style="display:flex; gap:1rem; align-items:center;">
+      <button class="theme-toggle" aria-label="Toggle light/dark theme" type="button" title="Toggle theme">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" 
+          stroke-width="1.5" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" 
+          style="display:none;">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" 
+          stroke-width="1.5" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" 
+          style="display:block;">
+          <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"></path>
+        </svg>
+      </button>
+      <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-navigation">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </div>
+    <div class="nav-links" id="primary-navigation">
+      <a href="index.html">Home</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="about.html" aria-current="page">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<main class="container">
+  <section aria-labelledby="services-title" class="section services-section">
+    <h2 id="services-title" class="section-title">My Services</h2>
+    <div class="services-list">
+      <article tabindex="0" class="service-card" aria-label="Wedding photography services">
+        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&amp;fit=crop&amp;w=80&amp;q=80" alt="Wedding photography icon" />
+        <h3>Wedding Photography</h3>
+        <p>Capturing your special day with elegance and emotion. Full-day coverage, creative portraits, and candid moments telling your unique story.</p>
+      </article>
+      <article tabindex="0" class="service-card" aria-label="Outdoor photography services">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&amp;fit=crop&amp;w=80&amp;q=80" alt="Outdoor photography icon" />
+        <h3>Outdoor & Landscape Photography</h3>
+        <p>Beautiful, crisp captures of nature and outdoor events with professional technique and creative vision.</p>
+      </article>
+      <article tabindex="0" class="service-card" aria-label="Product photography services">
+        <img src="https://images.unsplash.com/photo-1468071174046-657d9d351a40?auto=format&amp;fit=crop&amp;w=80&amp;q=80" alt="Product photography icon" />
+        <h3>Product Photography</h3>
+        <p>High-quality images tailored for brands and ecommerce, highlighting details with clean style and impactful presentation.</p>
+      </article>
+      <article tabindex="0" class="service-card" aria-label="Wildlife photography services">
+        <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&amp;fit=crop&amp;w=80&amp;q=80" alt="Wildlife photography icon" />
+        <h3>Wildlife Photography</h3>
+        <p>Nature and wildlife photography with patience and passion, suitable for editorial, commercial, or personal projects.</p>
+      </article>
+      <article tabindex="0" class="service-card" aria-label="Photography workshops and lessons">
+        <img src="https://images.unsplash.com/photo-1526040652367-ac003a0475fe?auto=format&amp;fit=crop&amp;w=80&amp;q=80" alt="Photography workshop icon" />
+        <h3>Workshops & Lessons</h3>
+        <p>Personalized workshops and lessons catering to all skill levels, helping you become a confident photographer.</p>
+      </article>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner" role="contentinfo" aria-label="Footer">
+    <div class="branding">
+      <div class="logo" aria-label="Photocraft Logo">Jamrez Photography</div>
+      <p>Photocraft is a modern photography portfolio showcasing timeless images across genres with elegance and simplicity.</p>
+    </div>
+    <nav class="footer-nav" aria-label="Footer Navigation">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" aria-current="page">About</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="social-section" aria-label="Social Media Links">
+      <h4>Follow</h4>
+      <ul class="social-links" role="list">
+        <li><a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" 
+               viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37a4 4 0 11-4.73-4.73"></path>
+            <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line>
+          </svg>
+        </a></li>
+        <li><a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter">
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+               viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+          </svg>
+        </a></li>
+        <li><a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+               viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+          </svg>
+        </a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const header = document.querySelector('header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 10) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+
+  menuToggle.addEventListener('click', () => {
+    const expanded = menuToggle.getAttribute('aria-expanded') === 'true' || false;
+    menuToggle.setAttribute('aria-expanded', !expanded);
+    menuToggle.classList.toggle('open');
+    navLinks.classList.toggle('active');
+  });
+
+  navLinks.querySelectorAll('a, button.btn-nav').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 768 && navLinks.classList.contains('active')) {
+        menuToggle.classList.remove('open');
+        navLinks.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', false);
+      }
+    });
+  });
+
+  const themeToggleButton = document.querySelector('.theme-toggle');
+  const rootElement = document.documentElement;
+  const iconSun = themeToggleButton.querySelector('.icon-sun');
+  const iconMoon = themeToggleButton.querySelector('.icon-moon');
+  const storedTheme = localStorage.getItem('theme');
+
+  function applyTheme(theme) {
+    if (theme === 'dark') {
+      rootElement.setAttribute('data-theme', 'dark');
+      iconSun.style.display = 'block';
+      iconMoon.style.display = 'none';
+      themeToggleButton.setAttribute('aria-label', 'Switch to light mode');
+      themeToggleButton.title = 'Switch to light mode';
+    } else {
+      rootElement.removeAttribute('data-theme');
+      iconSun.style.display = 'none';
+      iconMoon.style.display = 'block';
+      themeToggleButton.setAttribute('aria-label', 'Switch to dark mode');
+      themeToggleButton.title = 'Switch to dark mode';
+    }
+  }
+
+  function detectSystemTheme() {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      return 'dark';
+    }
+    return 'light';
+  }
+
+  let currentTheme = storedTheme || detectSystemTheme();
+  applyTheme(currentTheme);
+
+  themeToggleButton.addEventListener('click', () => {
+    currentTheme = rootElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    applyTheme(currentTheme);
+    localStorage.setItem('theme', currentTheme);
+  });
+</script>
+</body>
+</html>
