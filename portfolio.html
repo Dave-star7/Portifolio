@@ -656,6 +656,65 @@
       transform: translateX(calc(-50% - 0.75rem));
     }
   }
+
+
+
+
+
+.filter-nav {
+  text-align: center;
+  padding: 1rem;
+}
+
+.filter-btns {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 8px 16px;
+  background-color: #e0f0ff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background-color: #2196f3;
+  color: #fff;
+}
+
+.gallery {
+  columns: 4 300px;
+  column-gap: 1rem;
+  padding: 1rem;
+}
+
+.gallery-item {
+  break-inside: avoid;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+  transform: scale(1.02);
+}
+
+.gallery-item img {
+  width: 100%;
+  display: block;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
 </style>
 </head>
 <body>
@@ -716,43 +775,87 @@
     </div>
   </section>
 
-  <section class="filter-nav" aria-label="Filter portfolio by categories">
-    <div class="filter-btns" role="group" aria-label="Photo categories filters">
-      <button class="filter-btn active" data-filter="all" type="button" aria-pressed="true">All</button>
-      <button class="filter-btn" data-filter="weddings" type="button" aria-pressed="false">Weddings</button>
-      <button class="filter-btn" data-filter="outdoors" type="button" aria-pressed="false">Outdoors</button>
-      <button class="filter-btn" data-filter="product" type="button" aria-pressed="false">Product</button>
-      <button class="filter-btn" data-filter="wildlife" type="button" aria-pressed="false">Wildlife</button>
-    </div>
-  </section>
+  
+<section class="filter-nav" aria-label="Filter portfolio by categories">
+  <div class="filter-btns" role="group" aria-label="Photo categories filters">
+    <button class="filter-btn active" data-filter="all" type="button">All</button>
+    <button class="filter-btn" data-filter="weddings" type="button">Weddings</button>
+    <button class="filter-btn" data-filter="outdoors" type="button">Outdoors</button>
+    <button class="filter-btn" data-filter="product" type="button">Product</button>
+    <button class="filter-btn" data-filter="wildlife" type="button">Wildlife</button>
+  </div>
+</section>
 
-  <section class="portfolio-grid" role="list" aria-label="Photo portfolio grid">
-    <div class="portfolio-item weddings" role="listitem" tabindex="0" data-category="weddings" style="grid-row: span 2;">
-      <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80" alt="Bride and groom embracing in a sunset" />
-    </div>
-    <div class="portfolio-item outdoors" role="listitem" tabindex="0" data-category="outdoors" style="grid-column: span 2;">
-      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80" alt="Rocky beach at sunset" />
-    </div>
-    <div class="portfolio-item product" role="listitem" tabindex="0" data-category="product">
-      <img src="https://images.unsplash.com/photo-1519183071298-a2962e1f7016?auto=format&fit=crop&w=600&q=80" alt="Close-up of camera lens" />
-    </div>
-    <div class="portfolio-item wildlife" role="listitem" tabindex="0" data-category="wildlife">
-      <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=600&q=80" alt="Elephant in wildlife forest" />
-    </div>
-    <div class="portfolio-item weddings" role="listitem" tabindex="0" data-category="weddings">
-      <img src="https://images.unsplash.com/photo-1516875201164-7d10d04a9b21?auto=format&fit=crop&w=600&q=80" alt="Wedding ceremony outdoor" />
-    </div>
-    <div class="portfolio-item outdoors" role="listitem" tabindex="0" data-category="outdoors" style="grid-column: span 2;">
-      <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=600&q=80" alt="Mountain landscape with lake at sunset" />
-    </div>
-    <div class="portfolio-item product" role="listitem" tabindex="0" data-category="product" style="grid-row: span 2;">
-      <img src="https://images.unsplash.com/photo-1468071174046-657d9d351a40?auto=format&fit=crop&w=600&q=80" alt="Creative product photography of watch" />
-    </div>
-    <div class="portfolio-item wildlife" role="listitem" tabindex="0" data-category="wildlife">
-      <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=600&q=80" alt="Wild eagle close-up in the wild" />
-    </div>
-  </section>
-</main>
+<section class="gallery">
+  <div class="gallery-item weddings">
+    <img src="images/wedding1.jpg" alt="Wedding couple by the sea">
+  </div>
+  
+   <!-- Outdoors Images (10 total, mixed orientation) -->
+<div class="gallery-item outdoors">
+  <img src="images/Outdoor1.jpg" alt="Forest path at dawn">
+</div>
+
+
+<div class="gallery-item outdoors">
+  <img src="images/Outdoor3.jpg" alt="Tree in fog">
+</div>
+
+<div class="gallery-item outdoors">
+  <img src="images/Outdoor5.jpg" alt="Nature close-up">
+</div>
+
+<div class="gallery-item outdoors">
+  <img src="images/Outdoor2.jpg" alt="Forest path at dawn">
+</div>
+<div class="gallery-item outdoors">
+  <img src="images/Outdoor6.jpg" alt="Snowy woods">
+</div>
+<div class="gallery-item outdoors">
+  <img src="images/Outdoor7.jpg" alt="Bridge in the wild">
+</div>
+
+<div class="gallery-item outdoors">
+  <img src="images/Outdoor4.jpg" alt="River with rocks">
+</div>
+<div class="gallery-item outdoors">
+  <img src="images/Outdoor8.jpg" alt="Green hiking trail">
+</div>
+<div class="gallery-item outdoors">
+  <img src="images/Outdoor9.jpg" alt="Mountains and sky">
+</div>
+<div class="gallery-item outdoors">
+  <img src="images/Outdoor10.jpg" alt="Sunset over lake">
+</div>
+<div class="gallery-item outdoors">
+  <img src="images/Outdoor11.jpg" alt="Sunset over lake">
+</div>
+<div class="gallery-item outdoors">
+  <img src="images/Outdoor12.jpg" alt="Sunset over lake">
+</div>
+
+
+  
+  <div class="gallery-item product">
+    <img src="images/product1.jpg" alt="Luxury perfume bottle">
+  </div>
+  <div class="gallery-item wildlife">
+    <img src="images/wildlife1.jpg" alt="Zebra in grassland">
+  </div>
+  <div class="gallery-item weddings">
+    <img src="images/wedding2.jpg" alt="Bride walking down the aisle">
+  </div>
+  <div class="gallery-item outdoors">
+    <img src="images/outdoor2.jpg" alt="Hiking path in the Alps">
+  </div>
+  <div class="gallery-item product">
+    <img src="images/product2.jpg" alt="Headphones with blue lighting">
+  </div>
+  <div class="gallery-item wildlife">
+    <img src="images/wildlife2.jpg" alt="Bird in flight">
+  </div>
+</section>
+
 
 <footer>
   <div class="footer-inner" role="contentinfo" aria-label="Footer">
@@ -866,57 +969,36 @@
     localStorage.setItem('theme', currentTheme);
   });
 
+  
+</script>
+
+<script>
   const filterButtons = document.querySelectorAll('.filter-btn');
-  const portfolioItems = document.querySelectorAll('.portfolio-item');
-
-  function setActiveButton(activeBtn) {
-    filterButtons.forEach(btn => {
-      btn.classList.remove('active');
-      btn.setAttribute('aria-pressed', 'false');
-    });
-    activeBtn.classList.add('active');
-    activeBtn.setAttribute('aria-pressed', 'true');
-  }
-
-  function filterPortfolio(category) {
-    if (category === 'all') {
-      portfolioItems.forEach(item => {
-        item.style.display = 'block';
-        setTimeout(() => {
-          item.classList.add('visible');
-        }, 50);
-      });
-    } else {
-      portfolioItems.forEach(item => {
-        const itemCategories = item.dataset.category.split(' ');
-        if (itemCategories.includes(category)) {
-          item.style.display = 'block';
-          setTimeout(() => {
-            item.classList.add('visible');
-          }, 50);
-        } else {
-          item.style.display = 'none';
-          item.classList.remove('visible');
-        }
-      });
-    }
-  }
+  const galleryItems = document.querySelectorAll('.gallery-item');
 
   filterButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-      const category = btn.dataset.filter;
-      setActiveButton(btn);
-      filterPortfolio(category);
-    });
-  });
+      filterButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
 
-  window.addEventListener('load', () => {
-    portfolioItems.forEach((item, index) => {
-      setTimeout(() => {
-        item.classList.add('visible');
-      }, index * 100);
+      const filter = btn.getAttribute('data-filter');
+
+      galleryItems.forEach(item => {
+        if (filter === 'all' || item.classList.contains(filter)) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
     });
   });
 </script>
+
+
+
+
+
+
+
 </body>
 </html>
