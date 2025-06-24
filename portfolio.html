@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Portfolio</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+
 
 <style>
   :root {
@@ -718,39 +720,44 @@
 }
 
 
-
-
 .gallery {
-  column-count: 2;
-  column-gap: 10px;
-  padding: 10px;
-}
+      max-width: 1200px;
+      margin: auto;
+      padding: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 auto;
+    }
 
-.gallery-item {
-  break-inside: avoid;
-  margin-bottom: 10px;
-  border-radius: 8px;
-  overflow: hidden;
-}
+    .gallery-sizer,
+    .gallery-item {
+      width: 48%;
+    }
 
-.gallery-item img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 8px;
-}
+    .gallery-item {
+      margin-bottom: 10px;
+    }
 
-@media (min-width: 768px) {
-  .gallery {
-    column-count: 3;
-  }
-}
+    .gallery-item img {
+      width: 100%;
+      display: block;
+      border-radius: 4px;
+      object-fit: cover;
+    }
 
-@media (min-width: 1024px) {
-  .gallery {
-    column-count: 4;
-  }
-}
+    @media (min-width: 768px) {
+      .gallery-sizer,
+      .gallery-item {
+        width: 31%;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .gallery-sizer,
+      .gallery-item {
+        width: 23%;
+      }
+    }
 
 
 </style>
@@ -825,135 +832,47 @@
 </section>
 
 <section class="gallery">
-<div class="gallery-item wildlife">
-  <img src="images/Tours1.webp" alt="Zebra in grassland" loading="lazy">
-</div>
-<div class="gallery-item wildlife">
-  <img src="images/Tours2.webp" alt="Zebra in grassland" loading="lazy">
-</div>
-<div class="gallery-item wildlife">
-  <img src="images/Tours3.webp" alt="Zebra in grassland" loading="lazy">
-</div>
-<div class="gallery-item wildlife">
-  <img src="images/Tours4.webp" alt="Zebra in grassland" loading="lazy">
-</div>
-<div class="gallery-item wildlife">
-  <img src="images/Tours5.webp" alt="Zebra in grassland" loading="lazy">
-</div>
-<div class="gallery-item wildlife">
-  <img src="images/Tours6.webp" alt="Zebra in grassland" loading="lazy">
-</div>
-<div class="gallery-item outdoors">
-  <img src="images/Outdoor11.webp" alt="Sunset over lake" loading="lazy">
-</div>
-<div class="gallery-item wildlife">
-  <img src="images/Tours7.webp" alt="Zebra in grassland" loading="lazy">
-</div>
-<div class="gallery-item wildlife">
-  <img src="images/Tours8.webp" alt="Zebra in grassland" loading="lazy">
-</div>
-<div class="gallery-item outdoors">
-  <img src="images/Outdoor9.webp" alt="Mountains and sky" loading="lazy">
-</div>
-<div class="gallery-item wildlife">
-  <img src="images/Tours9.webp" alt="Zebra in grassland" loading="lazy">
-</div>
-<div class="gallery-item wildlife">
-  <img src="images/Tours10.webp" alt="Zebra in grassland" loading="lazy">
-</div>
-<div class="gallery-item wildlife">
-  <img src="images/Tours11.webp" alt="Zebra in grassland" loading="lazy">
-</div>
-<div class="gallery-item outdoors">
-  <img src="images/Outdoor3.webp" alt="Tree in fog" loading="lazy">
-</div>
-<div class="gallery-item wildlife">
-  <img src="images/Tours12.webp" alt="Zebra in grassland" loading="lazy">
-</div>
-<div class="gallery-item wildlife">
-  <img src="images/Tours13.webp" alt="Zebra in grassland" loading="lazy">
-</div>
-<div class="gallery-item wildlife">
-  <img src="images/Tours14.webp" alt="Zebra in grassland" loading="lazy">
-</div>
-<div class="gallery-item outdoors">
-  <img src="images/Outdoor11.webp" alt="Sunset over lake" loading="lazy">
-</div>
-<div class="gallery-item wildlife">
-  <img src="images/Tours15.webp" alt="Zebra in grassland" loading="lazy">
-</div>
-<div class="gallery-item outdoors">
-  <img src="images/Outdoor8.webp" alt="Green hiking trail" loading="lazy">
-</div>
-<div class="gallery-item wildlife">
-  <img src="images/Tours16.webp" alt="Zebra in grassland" loading="lazy">
-</div>
-<div class="gallery-item wildlife">
-  <img src="images/Tours17.webp" alt="Zebra in grassland" loading="lazy">
-</div>
-<div class="gallery-item outdoors">
-  <img src="images/Outdoor4.webp" alt="River with rocks" loading="lazy">
-</div>
-<div class="gallery-item wildlife">
-  <img src="images/Tours18.webp" alt="Zebra in grassland" loading="lazy">
-</div>
-<div class="gallery-item wildlife">
-  <img src="images/Tours19.webp" alt="Zebra in grassland" loading="lazy">
-</div>
-<div class="gallery-item outdoors">
-  <img src="images/Outdoor5.webp" alt="Nature close-up" loading="lazy">
-</div>
-<div class="gallery-item wildlife">
-  <img src="images/Tours20.webp" alt="Zebra in grassland" loading="lazy">
-</div>
-<div class="gallery-item wildlife">
-  <img src="images/Tours21.webp" alt="Zebra in grassland" loading="lazy">
-</div>
-<div class="gallery-item outdoors">
-  <img src="images/Outdoor12.webp" alt="Sunset over lake" loading="lazy">
-</div>
-<div class="gallery-item wildlife">
-  <img src="images/Tours22.webp" alt="Zebra in grassland" loading="lazy">
-</div>
-<div class="gallery-item outdoors">
-  <img src="images/Outdoor2.webp" alt="Forest path at dawn" loading="lazy">
-</div>
-<div class="gallery-item wildlife">
-  <img src="images/Tours23.webp" alt="Zebra in grassland" loading="lazy">
-</div>
-<div class="gallery-item outdoors">
-  <img src="images/Outdoor6.webp" alt="Snowy woods" loading="lazy">
-</div>
-<div class="gallery-item wildlife">
-  <img src="images/Tours24.webp" alt="Zebra in grassland" loading="lazy">
-</div>
-<div class="gallery-item wildlife">
-  <img src="images/Tours25.webp" alt="Zebra in grassland" loading="lazy">
-</div>
-<div class="gallery-item wildlife">
-  <img src="images/Tours22.webp" alt="Zebra in grassland" loading="lazy">
-</div>
-<div class="gallery-item outdoors">
-  <img src="images/Outdoor7.webp" alt="Bridge in the wild" loading="lazy">
-</div>
-<div class="gallery-item wildlife">
-  <img src="images/Tours26.webp" alt="Zebra in grassland" loading="lazy">
-</div>
-<div class="gallery-item outdoors">
-  <img src="images/Outdoor10.webp" alt="Sunset over lake" loading="lazy">
-</div>
-<div class="gallery-item wildlife">
-  <img src="images/Tours27.webp" alt="Zebra in grassland" loading="lazy">
-</div>
-<div class="gallery-item wildlife">
-  <img src="images/Tours28.webp" alt="Zebra in grassland" loading="lazy">
-</div>
-
-
-  
-  
-</section>
-
+    <div class="gallery-sizer"></div> <!-- required for masonry layout sizing -->
+    
+    <!-- Start Gallery Items -->
+    <div class="gallery-item"><img src="images/Tours1.webp" alt="Tour 1" loading="lazy"></div>
+    <div class="gallery-item"><img src="images/Tours2.webp" alt="Tour 2" loading="lazy"></div>
+    <div class="gallery-item"><img src="images/Tours3.webp" alt="Tour 3" loading="lazy"></div>
+    <div class="gallery-item"><img src="images/Outdoor11.webp" alt="Outdoor 11" loading="lazy"></div>
+    <div class="gallery-item"><img src="images/Tours4.webp" alt="Tour 4" loading="lazy"></div>
+    <div class="gallery-item"><img src="images/Outdoor5.webp" alt="Outdoor 5" loading="lazy"></div>
+    <div class="gallery-item"><img src="images/Tours5.webp" alt="Tour 5" loading="lazy"></div>
+    <div class="gallery-item"><img src="images/Outdoor6.webp" alt="Outdoor 6" loading="lazy"></div>
+    <div class="gallery-item"><img src="images/Tours6.webp" alt="Tour 6" loading="lazy"></div>
+    <div class="gallery-item"><img src="images/Outdoor7.webp" alt="Outdoor 7" loading="lazy"></div>
+    <div class="gallery-item"><img src="images/Tours7.webp" alt="Tour 7" loading="lazy"></div>
+    <div class="gallery-item"><img src="images/Outdoor8.webp" alt="Outdoor 8" loading="lazy"></div>
+    <div class="gallery-item"><img src="images/Tours8.webp" alt="Tour 8" loading="lazy"></div>
+    <div class="gallery-item"><img src="images/Outdoor9.webp" alt="Outdoor 9" loading="lazy"></div>
+    <div class="gallery-item"><img src="images/Tours9.webp" alt="Tour 9" loading="lazy"></div>
+    <div class="gallery-item"><img src="images/Outdoor10.webp" alt="Outdoor 10" loading="lazy"></div>
+    <div class="gallery-item"><img src="images/Tours10.webp" alt="Tour 10" loading="lazy"></div>
+    <div class="gallery-item"><img src="images/Outdoor12.webp" alt="Outdoor 12" loading="lazy"></div>
+    <div class="gallery-item"><img src="images/Tours11.webp" alt="Tour 11" loading="lazy"></div>
+    <div class="gallery-item"><img src="images/Tours12.webp" alt="Tour 12" loading="lazy"></div>
+    <div class="gallery-item"><img src="images/Tours13.webp" alt="Tour 13" loading="lazy"></div>
+    <div class="gallery-item"><img src="images/Tours14.webp" alt="Tour 14" loading="lazy"></div>
+    <div class="gallery-item"><img src="images/Tours15.webp" alt="Tour 15" loading="lazy"></div>
+    <div class="gallery-item"><img src="images/Tours16.webp" alt="Tour 16" loading="lazy"></div>
+    <div class="gallery-item"><img src="images/Tours17.webp" alt="Tour 17" loading="lazy"></div>
+    <div class="gallery-item"><img src="images/Tours18.webp" alt="Tour 18" loading="lazy"></div>
+    <div class="gallery-item"><img src="images/Tours19.webp" alt="Tour 19" loading="lazy"></div>
+    <div class="gallery-item"><img src="images/Tours20.webp" alt="Tour 20" loading="lazy"></div>
+    <div class="gallery-item"><img src="images/Tours21.webp" alt="Tour 21" loading="lazy"></div>
+    <div class="gallery-item"><img src="images/Tours22.webp" alt="Tour 22" loading="lazy"></div>
+    <div class="gallery-item"><img src="images/Tours23.webp" alt="Tour 23" loading="lazy"></div>
+    <div class="gallery-item"><img src="images/Tours24.webp" alt="Tour 24" loading="lazy"></div>
+    <div class="gallery-item"><img src="images/Tours25.webp" alt="Tour 25" loading="lazy"></div>
+    <div class="gallery-item"><img src="images/Tours26.webp" alt="Tour 26" loading="lazy"></div>
+    <div class="gallery-item"><img src="images/Tours27.webp" alt="Tour 27" loading="lazy"></div>
+    <div class="gallery-item"><img src="images/Tours28.webp" alt="Tour 28" loading="lazy"></div>
+    <!-- End Gallery Items -->
+  </section>
 
 <footer>
   <div class="footer-inner" role="contentinfo" aria-label="Footer">
@@ -1090,7 +1009,16 @@
 </script>
 
 
-
+ <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      new Masonry('.gallery', {
+        itemSelector: '.gallery-item',
+        columnWidth: '.gallery-sizer',
+        percentPosition: true,
+        gutter: 10
+      });
+    });
+  </script>
 
 
 
