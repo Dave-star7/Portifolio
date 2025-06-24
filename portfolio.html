@@ -717,6 +717,42 @@
   object-fit: cover;
 }
 
+
+
+
+.gallery {
+  column-count: 2;
+  column-gap: 10px;
+  padding: 10px;
+}
+
+.gallery-item {
+  break-inside: avoid;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+@media (min-width: 768px) {
+  .gallery {
+    column-count: 3;
+  }
+}
+
+@media (min-width: 1024px) {
+  .gallery {
+    column-count: 4;
+  }
+}
+
+
 </style>
 </head>
 <body>
@@ -789,21 +825,6 @@
 </section>
 
 <section class="gallery">
-  
-  
-   
-
-
-
-
-
-
-  
-  <!--<div class="gallery-item product">
-    <img src="" alt="Luxury perfume bottle">
-  </div>-->
-
-
 <div class="gallery-item wildlife">
   <img src="images/Tours1.webp" alt="Zebra in grassland" loading="lazy">
 </div>
